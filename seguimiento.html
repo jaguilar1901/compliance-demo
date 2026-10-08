@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recordatorios</title>
+<link rel="stylesheet" href="css/base.css?v=20261008b">
+<link rel="stylesheet" href="css/seguimiento.css?v=20261008b">
+</head>
+<body>
+<aside>
+  <div class="brand"><i><svg data-icon="cap"></svg></i><span>UASSIST.<b>ME</b></span></div>
+  <nav aria-label="Secciones"><a href="dashboard.html"><svg data-icon="grid"></svg>Resumen</a><a class="on" aria-current="page" href="seguimiento.html"><svg data-icon="mail"></svg>Recordatorios</a></nav>
+  <div class="user"><b>Usuario de demostración</b>Toda la organización<em>Administrador</em></div>
+</aside>
+<div class="wrap">
+  <div class="top"><h1>Recordatorios por correo</h1><span id="today"></span></div>
+  <main>
+    <div class="demo-banner" role="note"><b>Versión de demostración:</b> todas las personas y correos son ficticios. Comparte tus comentarios con Jorge.</div>
+
+    <!-- ===== Destinatarios + vista previa + envío (uso diario) ===== -->
+    <div class="grid panel-gap">
+      <div class="card panel">
+        <div class="thead"><div><h3>Personas a notificar</h3><p id="rsub"></p></div></div>
+        <div class="rtools">
+          <input id="rq" placeholder="Buscar persona…" aria-label="Buscar persona">
+          <select id="rdept" aria-label="Equipo"></select>
+        </div>
+        <div class="selbar">
+          <button class="btn-ghost" id="selAll">Seleccionar todos</button>
+          <button class="btn-ghost" id="selNone">Quitar todos</button>
+          <span class="muted" id="selCount"></span>
+        </div>
+        <div class="tw"><table class="people">
+          <thead><tr><th><input type="checkbox" id="chkAll" aria-label="Seleccionar todos los visibles"></th><th>PERSONA</th><th title="Cursos pendientes">PEND.</th></tr></thead>
+          <tbody id="rrows"></tbody>
+        </table></div>
+
+        <div class="foot">
+          <button class="btn-ghost" id="export">Exportar lista</button>
+        </div>
+      </div>
+
+      <div class="side">
+        <div class="card panel sendcard">
+          <h3>Enviar recordatorios</h3>
+          <p class="methodInd m-supabase" id="methodInd">Se abre en tu Outlook · sale de tu correo</p>
+          <p id="sendSummary"></p>
+          <button class="btn-primary big" id="send">Abrir correos</button>
+          <div id="sendStatus" class="sendstatus" role="status"></div>
+          <small class="muted">Cada correo se abre ya escrito en tu programa de correo. Revísalo y presiona <b>Enviar</b> ahí; luego vuelve aquí para abrir el siguiente.</small>
+        </div>
+
+        <div class="card panel">
+          <h3>Vista previa</h3>
+          <p id="pvsub">Haz clic en una persona de la lista para ver su correo.</p>
+          <div class="mail" id="mail" hidden>
+            <dl>
+              <dt>De</dt><dd>Tu correo</dd>
+              <dt>Para</dt><dd id="mTo"></dd>
+              <dt>CC</dt><dd id="mCc"></dd>
+              <dt>Asunto</dt><dd id="mSub"></dd>
+            </dl>
+            <pre id="mBody" class="mbody"></pre>
+          </div>
+          <div class="actions" id="mActions" hidden>
+            <button class="btn-ghost strong" id="sendOne">Abrir solo este correo</button>
+            <button class="btn-ghost" id="copy">Copiar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Configuración (se toca poco) ===== -->
+    <details class="card panel cfg" id="cfgCard">
+      <summary>
+        <span><h3>Configuración del correo</h3><p>Plantilla del mensaje y correo de RR.HH. que va en copia.</p></span>
+        <span class="chev" aria-hidden="true"></span>
+      </summary>
+
+      <div class="cfgbody">
+        <h4>Plantilla del correo</h4>
+        <div class="form">
+          <div class="full"><label for="subject">Asunto</label><input id="subject"></div>
+          <div class="full">
+            <label for="body">Mensaje</label>
+            <div class="vars" id="vars" aria-label="Insertar variable">
+              <span>Insertar:</span>
+              <button type="button" data-v="{nombre}">{nombre}</button>
+              <button type="button" data-v="{cursos}">{cursos}</button>
+              <button type="button" data-v="{total}">{total}</button>
+              <button type="button" data-v="{equipo}">{equipo}</button>
+              <button type="button" data-v="{mes}">{mes}</button>
+              <button type="button" data-v="{fecha}">{fecha}</button>
+            </div>
+            <textarea id="body" rows="12"></textarea>
+          </div>
+        </div>
+
+        <h4>Destinatarios de cada correo</h4>
+        <div class="form">
+          <div class="checks full">
+            <span>De: <b>tu correo</b> · Para: <b>la persona</b></span>
+            <label class="ccfix">CC (RR.HH.):
+              <input id="cc" type="email" placeholder="rrhh@ejemplo.com" aria-label="Copia a RR.HH."></label>
+          </div>
+        </div>
+
+
+        <div class="actions">
+          <button class="btn-primary" id="save">Guardar configuración</button>
+          <button class="btn-ghost" id="reset">Restaurar plantilla original</button>
+          <span id="saved" class="muted"></span>
+        </div>
+      </div>
+    </details>
+
+  </main>
+</div>
+
+<script src="js/icons.js?v=20261008b"></script>
+<script src="js/data.js?v=20261008b"></script>
+<script src="js/seguimiento.js?v=20261008b"></script>
+</body>
+</html>

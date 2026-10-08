@@ -1,0 +1,96 @@
+/* ==========================================================
+   dashboard.css — estilos específicos de dashboard.html (Resumen)
+   ========================================================== */
+
+.panel { padding: 20px; }
+.scope { margin: 0 0 12px; color: var(--muted); font-size: 13px; }
+.scope b { color: var(--text); }
+
+/* ---------- Tarjetas que también filtran ---------- */
+button.kpi { font: inherit; color: inherit; text-align: left; cursor: pointer; transition: border-color .15s, box-shadow .15s, transform .15s; }
+button.kpi:hover { border-color: color-mix(in srgb, var(--c) 55%, var(--line)); }
+button.kpi:active { transform: translateY(1px); }
+button.kpi[aria-pressed="true"] { border-color: var(--c); box-shadow: 0 0 0 1px var(--c), var(--shadow); background: color-mix(in srgb, var(--c) 7%, var(--card)); }
+.kpi.static strong { color: var(--muted); }
+
+/* ---------- Vistas: Personas · Equipos · Cursos ---------- */
+.views { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin: -20px -20px 16px; padding: 0 16px; }
+.views button { background: none; border: 0; border-bottom: 2px solid transparent; padding: 14px 12px 12px; font-weight: 700; color: var(--muted); margin-bottom: -1px; }
+.views button:hover { color: var(--text); }
+.views button[aria-selected="true"] { color: var(--text); border-bottom-color: var(--gold); }
+.vhead { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+.vhead p { margin: 0; color: var(--muted); }
+.vhead p b { color: var(--text); }
+.vhead select { width: auto; min-width: 200px; }
+.linkbtn { background: none; border: 0; padding: 0; color: var(--accent); font-weight: 600; text-decoration: underline; }
+
+/* ---------- Filtros de personas ---------- */
+.rfilters { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr) auto; gap: 12px; align-items: end; margin-bottom: 14px; }
+.rfilters label { font-size: 12px; color: var(--muted); display: block; margin-bottom: 4px; }
+.rfilters button, .btn-ghost { padding: 9px 14px; border: 1px solid var(--line); background: var(--field); border-radius: var(--radius-sm); font-weight: 600; white-space: nowrap; }
+.rfilters button:hover, .btn-ghost:hover { border-color: var(--gold); }
+
+/* ---------- Tablas ---------- */
+.tw { overflow-x: auto; margin: 0 -20px; }
+th.s:hover { color: var(--text); }
+tbody tr:hover { background: var(--field); }
+#v-personas th, #v-personas td { padding: 12px; }
+#v-personas th:first-child, #v-personas td:first-child, .teams th:first-child, .teams td:first-child { padding-left: 20px; }
+#v-personas td small { overflow-wrap: anywhere; }
+.num { background: var(--gold); color: #15171b; border-radius: 5px; padding: 2px 9px; font-weight: 800; }
+.zero { color: var(--muted); }
+.chips { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; min-width: 180px; max-width: 460px; }
+.chip { background: var(--soft); border: 1px solid var(--line); border-radius: 6px; padding: 3px 9px; font-size: 12px; max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.more { background: var(--gold-soft); border: 1px solid var(--gold-line); border-radius: 6px; padding: 3px 9px; font-size: 12px; }
+.empty-row { text-align: center; color: var(--muted); padding: 28px; }
+.pill { font-size: 12px; font-weight: 700; padding: 3px 9px; border-radius: 99px; white-space: nowrap; }
+.pill.pend { background: color-mix(in srgb, var(--orange) 18%, var(--card)); color: var(--orange); }
+.pill.ok { background: color-mix(in srgb, var(--green) 18%, var(--card)); color: var(--green); }
+.pill.lms { background: color-mix(in srgb, var(--red) 16%, var(--card)); color: var(--red); }
+.okline { color: var(--green); font-size: 13px; }
+.lmsline { color: var(--muted); font-size: 13px; }
+.warnc { color: var(--orange); font-weight: 700; }
+.nodata { color: var(--muted); font-size: 12px; }
+
+.pager { display: flex; justify-content: space-between; align-items: center; padding-top: 16px; color: var(--muted); }
+.pager button { border: 1px solid var(--line); background: var(--card); border-radius: 6px; padding: 5px 12px; }
+.pager button:hover:not(:disabled) { border-color: var(--gold); }
+.pager button:disabled { opacity: .4; cursor: default; }
+
+/* ---------- Equipos ---------- */
+.teams tbody tr { cursor: pointer; }
+.teams td, .teams th { padding: 10px 14px; }
+.teams td small { display: block; color: var(--muted); }
+.mini { display: flex; align-items: center; gap: 10px; min-width: 160px; }
+.mini .bar { flex: 1; }
+.mini b { width: 40px; text-align: right; font-weight: 600; }
+.bar { height: 7px; background: var(--soft); border-radius: 4px; overflow: hidden; }
+.bar div { height: 100%; border-radius: 4px; background: var(--green); }
+.bar div.lo { background: var(--orange); }
+.bar div.vlo { background: var(--red); }
+.legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+
+/* ---------- Cursos ---------- */
+.course { border-top: 1px solid var(--line); }
+.crow {
+  display: grid; grid-template-columns: minmax(0, 1fr) 130px 150px; gap: 12px; align-items: center;
+  width: 100%; padding: 12px 4px; background: none; border: 0; text-align: left; border-radius: 6px;
+}
+.crow:hover:not(:disabled) { background: var(--field); }
+.crow:disabled { cursor: default; color: inherit; }
+.crow .t { font-weight: 600; }
+.crow[aria-expanded="true"] .t::after { content: " ▾"; color: var(--muted); }
+.cnum { text-align: right; font-size: 13px; color: var(--muted); }
+.tag { font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 99px; background: var(--soft); color: var(--muted); width: fit-content; }
+.who { padding: 2px 4px 14px; display: flex; flex-wrap: wrap; gap: 6px; }
+.person { background: var(--soft); border: 1px solid var(--line); border-radius: 6px; padding: 4px 10px; font-size: 13px; text-align: left; }
+.person small { color: var(--muted); margin-left: 4px; }
+.person:hover { border-color: var(--gold); }
+
+@media (max-width: 700px) {
+  .rfilters { grid-template-columns: 1fr; }
+  .crow { grid-template-columns: minmax(0, 1fr) auto; }
+  .crow .tag { display: none; }
+  .views button { padding-inline: 10px; }
+}

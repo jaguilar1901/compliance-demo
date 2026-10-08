@@ -1,0 +1,147 @@
+/* ==========================================================
+   seguimiento.css — estilos específicos de seguimiento.html
+   ========================================================== */
+
+.panel { padding: 20px; }
+.panel h3 { margin: 0; font-size: 19px; }
+.panel p { margin: 4px 0 16px; color: var(--muted); }
+.panel-gap { margin-bottom: 20px; }
+.thead { display: flex; justify-content: space-between; align-items: start; gap: 12px; flex-wrap: wrap; }
+.tools select { width: auto; min-width: 180px; }
+.kpis.flush { margin: 0 0 16px; }
+.muted { color: var(--muted); font-size: 12px; }
+.grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+
+/* ---------- Programación ---------- */
+.switch { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+.switch input { position: absolute; opacity: 0; width: 0; height: 0; }
+.switch span { width: 42px; height: 24px; border-radius: 99px; background: var(--soft); border: 1px solid var(--line); position: relative; transition: background .15s; }
+.switch span::after { content: ""; position: absolute; top: 2px; left: 2px; width: 18px; height: 18px; border-radius: 50%; background: var(--muted); transition: transform .15s, background .15s; }
+.switch input:checked + span { background: var(--gold); border-color: var(--gold); }
+.switch input:checked + span::after { transform: translateX(18px); background: #15171b; }
+.switch input:focus-visible + span { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+.notice {
+  background: var(--gold-soft); border: 1px solid var(--gold-line); border-radius: var(--radius-sm);
+  padding: 10px 14px; font-size: 13px; margin-bottom: 16px; line-height: 1.5;
+}
+.notice ul { margin: 6px 0 0; padding-left: 20px; }
+
+.form { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.form label { font-size: 12px; color: var(--muted); display: block; margin-bottom: 4px; }
+.form .full { grid-column: 1 / -1; }
+.form .checks { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; padding-bottom: 4px; }
+.form .checks label { display: flex; align-items: center; gap: 8px; color: var(--text); font-size: 13px; margin: 0; cursor: pointer; }
+.form .checks input { width: auto; accent-color: var(--gold); }
+textarea {
+  width: 100%; padding: 10px; border: 1px solid var(--line); border-radius: var(--radius-sm);
+  background: var(--field); color: var(--text); font: inherit; resize: vertical;
+}
+textarea:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+.actions { display: flex; gap: 10px; align-items: center; margin-top: 16px; flex-wrap: wrap; }
+.btn-ghost { border: 1px solid var(--line); background: var(--field); border-radius: var(--radius-sm); padding: 8px 12px; font-weight: 600; font-size: 13px; }
+.btn-ghost:hover { border-color: var(--gold); }
+
+/* ---------- Destinatarios ---------- */
+.rtools { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+.rtools input { flex: 1; min-width: 150px; }
+.rtools select { width: auto; max-width: 200px; }
+.tw { overflow-x: auto; margin: 0 -20px; }
+td input[type=email] { padding: 5px 8px; font-size: 12px; min-width: 150px; }
+.people th, .people td { padding-inline: 12px; }
+.people td:first-child, .people th:first-child { padding-left: 20px; width: 1%; }
+.people td:last-child, .people th:last-child { padding-right: 20px; text-align: right; width: 1%; }
+.people td small { overflow-wrap: anywhere; }
+td input[type=checkbox] { width: auto; accent-color: var(--gold); }
+tr.sel { background: color-mix(in srgb, var(--gold) 14%, var(--card)); }
+tr.off td:not(:first-child) { opacity: .45; }
+tbody tr[data-e] { cursor: pointer; }
+.foot { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; padding-top: 16px; }
+.foot .muted { margin-left: auto; }
+
+/* ---------- Vista previa ---------- */
+.mail { border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--field); padding: 14px; }
+.mail dl { display: grid; grid-template-columns: 60px 1fr; gap: 4px 10px; margin: 0 0 12px; font-size: 13px; }
+.mail dt { color: var(--muted); }
+.mail dd { margin: 0; word-break: break-word; }
+.mail pre { margin: 0; white-space: pre-wrap; font: inherit; border-top: 1px solid var(--line); padding-top: 12px; }
+.warn { color: var(--orange); }
+
+@media (max-width: 1000px) {
+  .grid { grid-template-columns: minmax(0, 1fr); }
+  .form { grid-template-columns: 1fr; }
+  .form .checks { grid-column: auto; }
+}
+
+/* ---------- Plantilla y envío ---------- */
+h4 { margin: 22px 0 10px; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.form .full2 { grid-column: span 2; }
+.form .ccfix { display: flex; align-items: center; gap: 8px; }
+.form .ccfix input { width: 240px; max-width: 100%; }
+.vars { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin-bottom: 8px; }
+.vars span { font-size: 12px; color: var(--muted); }
+.vars button { border: 1px solid var(--line); background: var(--field); border-radius: 6px; padding: 3px 8px; font: 12px ui-monospace, Consolas, monospace; }
+.vars button:hover { border-color: var(--gold); }
+details.adv { margin-top: 18px; border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 10px 14px; }
+details.adv summary { cursor: pointer; font-weight: 700; font-size: 13px; }
+details.adv > p { margin: 8px 0 12px; }
+.tm { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.tm label { font-size: 12px; color: var(--muted); }
+.tm input { margin-top: 3px; padding: 6px 8px; font-size: 12px; }
+.selbar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 10px; }
+.selbar .muted { margin-left: auto; }
+th input[type=checkbox] { width: auto; accent-color: var(--gold); }
+.side { display: flex; flex-direction: column; gap: 20px; }
+.sendcard h3 { margin-bottom: 10px; }
+.sendcard #sendSummary { margin: 0 0 12px; color: var(--text); font-size: 13px; }
+.methodInd { display: inline-flex; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 99px; margin: 0 0 12px; }
+.methodInd.m-local { background: color-mix(in srgb, var(--accent) 16%, var(--card)); color: var(--accent); }
+.methodInd.m-supabase { background: color-mix(in srgb, var(--green) 16%, var(--card)); color: var(--green); }
+.methodInd.m-off { background: color-mix(in srgb, var(--red) 16%, var(--card)); color: var(--red); }
+.onerow { padding: 12px; border: 1px solid var(--gold-line); background: var(--gold-soft); border-radius: var(--radius-sm); margin-bottom: 14px; }
+.onerow label { font-size: 12px; font-weight: 700; color: var(--muted); display: block; margin-bottom: 4px; }
+.onewho { margin: 0 0 10px; font-size: 14px; font-weight: 600; }
+.onewho .name { color: var(--text); }
+.divider { border-top: 1px solid var(--line); margin: 16px 0; }
+.testadv { margin-top: 14px; }
+.testadv summary { font-size: 12px; color: var(--muted); }
+.btn-primary.big { width: 100%; padding: 12px; font-size: 15px; }
+.btn-primary:disabled { background: var(--soft); color: var(--muted); cursor: not-allowed; filter: none; }
+.sendstatus { margin-top: 12px; font-size: 13px; }
+.sendstatus:empty { display: none; }
+.sendstatus button { margin-top: 8px; }
+dialog { border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); color: var(--text); padding: 0; width: min(560px, calc(100vw - 32px)); box-shadow: 0 20px 60px rgba(0,0,0,.35); }
+dialog::backdrop { background: rgba(0, 0, 0, .55); }
+.dlgbox { padding: 22px; }
+.dlgbox h3 { margin: 0 0 12px; font-size: 19px; }
+.dlgtable { margin: 12px 0; border: 1px solid var(--line); border-radius: var(--radius-sm); }
+.dlgtable th, .dlgtable td { padding: 8px 12px; font-size: 12px; }
+@media (max-width: 1000px) { .tm { grid-template-columns: 1fr; } .form .full2 { grid-column: auto; } }
+
+.testrow { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; padding: 12px; border: 1px dashed var(--line); border-radius: var(--radius-sm); }
+.testrow label { font-size: 12px; color: var(--muted); }
+.inline { display: flex; gap: 8px; }
+.inline input { flex: 1; min-width: 0; }
+.btn-link { display: block; margin: 10px auto 0; background: none; border: 0; color: var(--muted); font-size: 12px; text-decoration: underline; cursor: pointer; }
+.btn-link:hover:not(:disabled) { color: var(--text); }
+.btn-link:disabled { opacity: .4; cursor: not-allowed; }
+.btn-ghost:disabled { opacity: .45; cursor: not-allowed; }
+
+/* ---------- Envío individual (secundario, distinto del envío masivo) ---------- */
+.btn-ghost.strong { border-color: var(--text); font-weight: 700; }
+.btn-ghost.strong:hover { border-color: var(--gold); }
+
+/* ---------- Configuración plegable ---------- */
+details.cfg > summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; cursor: pointer; }
+details.cfg > summary::-webkit-details-marker { display: none; }
+details.cfg > summary p { margin: 4px 0 0; }
+details.cfg .chev { width: 10px; height: 10px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg); transition: transform .15s; flex-shrink: 0; margin-right: 6px; }
+details.cfg[open] .chev { transform: rotate(-135deg); }
+details.cfg[open] > summary { margin-bottom: 18px; }
+.cfgbody h4:first-of-type { margin-top: 22px; }
+
+/* ---------- Vista previa del correo en HTML (fondo blanco, como llega al buzón) ---------- */
+.mbody { border-top: 1px solid var(--line); padding: 14px; margin: 0 -14px -14px; background: #fff; border-radius: 0 0 var(--radius-sm) var(--radius-sm); }
+.mbody p, .mbody li { color: #15181e; }
+.mbody { color: #15181e; white-space: pre-wrap; font: inherit; }

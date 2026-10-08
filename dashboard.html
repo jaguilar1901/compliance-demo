@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resumen de capacitación</title>
+<link rel="stylesheet" href="css/base.css?v=20261008">
+<link rel="stylesheet" href="css/dashboard.css?v=20261008">
+</head>
+<body>
+<aside>
+  <div class="brand"><i><svg data-icon="cap"></svg></i><span>UASSIST.<b>ME</b></span></div>
+  <nav aria-label="Secciones"><a class="on" aria-current="page" href="dashboard.html"><svg data-icon="grid"></svg>Resumen</a><a href="seguimiento.html"><svg data-icon="mail"></svg>Recordatorios</a></nav>
+  <div class="user"><b>Usuario de demostración</b>Toda la organización<em>Administrador</em></div>
+</aside>
+<div class="wrap">
+  <div class="top"><h1>Resumen de capacitación</h1><span id="today"></span></div>
+  <main>
+    <div class="demo-banner" role="note"><b>Versión de demostración:</b> todas las personas y correos son ficticios. Comparte tus comentarios con Jorge.</div>
+    <p class="scope" id="scope">Cargando…</p>
+
+    <!-- Tarjetas: resumen y, a la vez, filtro de la lista de personas -->
+    <div class="kpis" id="kpis" role="group" aria-label="Filtrar personas por estado"></div>
+
+    <div class="card panel">
+      <div class="views" role="tablist" aria-label="Vista">
+        <button role="tab" data-v="personas" aria-selected="true">Personas</button>
+        <button role="tab" data-v="equipos" aria-selected="false">Equipos</button>
+        <button role="tab" data-v="cursos" aria-selected="false">Cursos</button>
+      </div>
+
+      <!-- ===== Personas ===== -->
+      <section class="view" id="v-personas" role="tabpanel">
+        <div class="vhead">
+          <p id="sub"></p>
+          <button class="btn-ghost" id="csv">Exportar CSV</button>
+        </div>
+        <div class="rfilters">
+          <div><label for="q">Buscar persona</label><input id="q" type="search" placeholder="Nombre o correo"></div>
+          <div><label for="dept">Equipo</label><select id="dept"></select></div>
+          <button id="clear" hidden>Quitar filtros</button>
+        </div>
+        <div class="tw"><table>
+          <thead><tr><th>PERSONA</th><th>EQUIPO</th><th>ESTADO</th><th class="s" id="sort" title="Cursos pendientes" tabindex="0" aria-sort="descending">PEND. ↓</th><th>DETALLE</th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table></div>
+        <div class="pager"><button id="prev">← Anterior</button><span id="pg"></span><button id="next">Siguiente →</button></div>
+      </section>
+
+      <!-- ===== Equipos ===== -->
+      <section class="view" id="v-equipos" role="tabpanel" hidden>
+        <div class="vhead">
+          <p>Haz clic en un equipo para ver a sus personas.</p>
+          <div class="legend"><span><i style="background:var(--red)"></i>Menos de 70 %</span><span><i style="background:var(--orange)"></i>70 a 94 %</span><span><i style="background:var(--green)"></i>95 % o más</span></div>
+        </div>
+        <div class="tw"><table class="teams">
+          <thead id="thead"><tr>
+            <th class="s" data-k="name" tabindex="0" aria-sort="none">EQUIPO</th>
+            <th class="s" data-k="pend" tabindex="0" aria-sort="none">CON PENDIENTES</th>
+            <th class="s" data-k="lms" tabindex="0" aria-sort="none">SIN CUENTA LMS</th>
+            <th class="s" data-k="ok" tabindex="0" aria-sort="none">AL DÍA</th>
+            <th class="s" data-k="ex" tabindex="0" aria-sort="none">EXENTOS</th>
+            <th class="s" data-k="pct" tabindex="0" aria-sort="ascending">CUMPLIMIENTO</th>
+          </tr></thead>
+          <tbody id="trows"></tbody>
+        </table></div>
+      </section>
+
+      <!-- ===== Cursos ===== -->
+      <section class="view" id="v-cursos" role="tabpanel" hidden>
+        <div class="vhead">
+          <p id="csub"></p>
+          <select id="cat" aria-label="Categoría"></select>
+        </div>
+        <div id="courses"></div>
+      </section>
+    </div>
+  </main>
+</div>
+<script src="js/icons.js?v=20261008"></script>
+<script src="js/data.js?v=20261008"></script>
+<script src="js/dashboard.js?v=20261008"></script>
+</body>
+</html>
